@@ -1,0 +1,36 @@
+.item-modal {
+    max-width: 495px;
+    max-height: 610px;
+    color: black;
+    border-radius: 16px;
+}
+
+.modal__caption {
+    font-size: 20px;
+}
+.modal__weather {
+    font-size: 20px;
+   
+}
+.modal__content_type_image {
+    position: relative;
+    background-color: #fff;
+    
+    max-width: 495px;
+    box-sizing: border-box;
+    width: 100%;
+    color: black;
+    border-radius: 20px;
+}
+
+.modal__image {
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+}
+
+.modal__footer {
+    padding: 0px 28px 20px;
+    font-family: Cabinet Grotesk, sans-serif;
+}
