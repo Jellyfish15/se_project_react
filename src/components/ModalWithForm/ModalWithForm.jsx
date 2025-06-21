@@ -6,12 +6,11 @@ function ModalWithForm({
     children,
     buttonText,
     title,
-    activeModal,
     onClose,
     isOpen
 }) {
     useEffect(() => {
-    if (activeModal !== 'add-garment') return;
+    if (!isOpen) return;
 
     const handleEsc = (e) => {
       if (e.key === "Escape") {
@@ -20,7 +19,7 @@ function ModalWithForm({
     };
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
-  }, [activeModal, onClose]);
+  }, [isOpen, onClose]);
 
     return (
         <div id='modal-with-form' 
