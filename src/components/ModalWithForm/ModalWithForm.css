@@ -32,6 +32,10 @@
   size: 20px;
 }
 
+.modal__close-button:hover {
+    cursor: pointer;
+}
+
 .modal__content {
   position: relative;
   background-color: #fff;
@@ -73,6 +77,7 @@
   flex-direction: column;
 }
 
+
 .modal__radio-label {
   display: flex;
   align-items: center;
@@ -87,6 +92,7 @@
 
 .modal__radio-input {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .modal__radio-input:checked + .modal__radio-label {
@@ -106,6 +112,7 @@
 
 .modal__submit:hover {
   background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
 }
 
 .modal__submit:disabled {

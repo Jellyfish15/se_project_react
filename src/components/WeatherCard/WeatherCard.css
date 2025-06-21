@@ -26,6 +26,9 @@
     top: 20px;
     left: 16px;
 }
+.card__image:hover {
+    cursor: pointer;
+}
 
 .weather-card__image {
     object-fit: cover;

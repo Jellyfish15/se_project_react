@@ -32,8 +32,7 @@ function App() {
     setActiveModal("");
   };
 
-  console.log(456);
-  console.log(weatherData);
+
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -60,6 +59,7 @@ function App() {
         title="New garment"
         activeModal={activeModal}
         onClose={closeActiveModal}
+        isOpen={activeModal === "add-garment"}
       >
         <label htmlFor="name" className="modal__label">
           Name
@@ -87,6 +87,7 @@ function App() {
               type="radio"
               className="modal__radio-input "
               name="weather_type"
+              required
             />
 
             <label htmlFor="hot" className="modal__radio-label">
@@ -100,6 +101,7 @@ function App() {
               type="radio"
               className="modal__radio-input"
               name="weather_type"
+              required
             />
             <label htmlFor="warm" className="modal__radio-label">
               {" "}
@@ -112,6 +114,7 @@ function App() {
               type="radio"
               className="modal__radio-input "
               name="weather_type"
+              required
             />
             <label htmlFor="cold" className="modal__radio-label">
               {" "}

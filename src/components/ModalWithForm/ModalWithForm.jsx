@@ -8,6 +8,7 @@ function ModalWithForm({
     title,
     activeModal,
     onClose,
+    isOpen
 }) {
     useEffect(() => {
     if (activeModal !== 'add-garment') return;
@@ -23,7 +24,7 @@ function ModalWithForm({
 
     return (
         <div id='modal-with-form' 
-        className={`modal${activeModal === 'add-garment' ? ' modal_opened' : ''}`}
+        className={`modal${isOpen ? ' modal_opened' : ''}`}
         onClick={onClose}
         
         >
