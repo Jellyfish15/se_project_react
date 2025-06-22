@@ -2,62 +2,52 @@ export const weatherCardOptions = [
   {
     day: true,
     condition: "clear",
-    url: new URL(
-      "../assets/day/clear.png", import.meta.url).href,
+    url: new URL("../assets/day/clear.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "clouds",
-    url: new URL(
-      "../assets/day/cloudy.png", import.meta.url).href,
+    url: new URL("../assets/day/cloudy.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "rain",
-    url: new URL(
-      "../assets/day/rain.png", import.meta.url).href,
+    url: new URL("../assets/day/rain.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "snow",
-    url: new URL(
-      "../assets/day/snow.png", import.meta.url).href,
+    url: new URL("../assets/day/snow.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "fog",
-    url: new URL(
-      "../assets/day/fog.png", import.meta.url).href,
+    url: new URL("../assets/day/fog.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "clear",
-    url: new URL(
-      "../assets/night/clear.png", import.meta.url).href,
+    url: new URL("../assets/night/clear.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "clouds",
-    url: new URL(
-      "../assets/night/clouds.png", import.meta.url).href,
+    url: new URL("../assets/night/clouds.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "rain",
-    url: new URL(
-      "../assets/night/rain.png", import.meta.url).href,
+    url: new URL("../assets/night/rain.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "snow",
-    url: new URL(
-      "../assets/night/snow.png", import.meta.url).href,
+    url: new URL("../assets/night/snow.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "fog",
-    url: new URL(
-      "../assets/day/fog.png", import.meta.url).href,
+    url: new URL("../assets/day/fog.png", import.meta.url).href,
   },
 ];
 
@@ -76,7 +66,7 @@ export const weatherOptions = {
     snow: new URL("../assets/night/snow.png", import.meta.url).href,
     fog: new URL("../assets/night/fog.png", import.meta.url).href,
   },
-}
+};
 
 export const weatherConditions = {
   clear: "Clear",
@@ -120,12 +110,12 @@ export const defaultClothingItems = [
     name: "Coat",
     weather: "cold",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
-  }
+  },
 ];
 
 export const coordinates = {
   latitude: 35.1417,
-  longitude: -84.8504
-}
+  longitude: -84.8504,
+};
 
 export const APIkey = "b8c37994be50619036c36569d865dc6a";

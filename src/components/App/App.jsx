@@ -32,8 +32,6 @@ function App() {
     setActiveModal("");
   };
 
-
-
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {

@@ -1,18 +1,17 @@
 .card {
-    width: 323px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    font-family: Cabinet Grotesk, sans-serif;
+  width: 323px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-family: Cabinet Grotesk, sans-serif;
 }
 
 .card__name {
-    position: absolute;
-    top: 15px;
-    margin: 0;
+  position: absolute;
+  top: 15px;
+  margin: 0;
 }
 
 .card__image {
-
-    width: 100%;
+  width: 100%;
 }
