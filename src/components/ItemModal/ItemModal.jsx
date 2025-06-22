@@ -3,27 +3,27 @@ import closeIcon from "../../assets/close_X_light.svg";
 import React, { useEffect } from "react";
 
 function ItemModal({ activeModal, onClose, card }) {
-useEffect(() => {
-  const handleEsc = (e) => {
-    if (e.key === "Escape") {
-      onClose();
-    }
-  };
-  document.addEventListener("keydown", handleEsc);
-  return () => document.removeEventListener("keydown", handleEsc);
-}, [onClose]);
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
 
   return (
-    <div id="item-modal" 
-    className={`modal${activeModal === 'preview' ? ' modal_opened' : ''}`}
-    onClick={onClose}
+    <div
+      id="item-modal"
+      className={`modal${activeModal === "preview" ? " modal_opened" : ""}`}
+      onClick={onClose}
     >
-      <div className="modal__content_type_image"
-      onClick={e => e.stopPropagation()}>
-        <button
-          className="modal__close-button"
-          onClick={onClose}
-          type="button">
+      <div
+        className="modal__content_type_image"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="modal__close-button" onClick={onClose} type="button">
           <img
             className="modal__close-image"
             src={closeIcon}
