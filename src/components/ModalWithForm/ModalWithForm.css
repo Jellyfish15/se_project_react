@@ -33,7 +33,7 @@
 }
 
 .modal__close-button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal__content {
@@ -76,7 +76,6 @@
   display: flex;
   flex-direction: column;
 }
-
 
 .modal__radio-label {
   display: flex;

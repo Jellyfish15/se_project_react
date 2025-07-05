@@ -27,8 +27,28 @@
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
 }
-
 .modal__footer {
+  display: flex;
+  justify-content: space-between;;
   padding: 0px 28px 20px;
   font-family: Cabinet Grotesk, sans-serif;
+}
+.modal__weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.item-modal__delete-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0 20px;
+  background: transparent;
+  color: #FF4D00;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+.item-modal__delete-btn:hover {
+  cursor: pointer;
 }

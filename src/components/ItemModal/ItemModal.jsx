@@ -2,7 +2,7 @@ import "./ItemModal.css";
 import closeIcon from "../../assets/close_X_light.svg";
 import React, { useEffect } from "react";
 
-function ItemModal({ activeModal, onClose, card }) {
+function ItemModal({ activeModal, onClose, card, onDelete }) {
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {
@@ -30,10 +30,21 @@ function ItemModal({ activeModal, onClose, card }) {
             alt="Close modal"
           />
         </button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl || card.link} alt={card.name} className="modal__image" />
         <div className="modal__footer">
+
+          <div className="modal__weather-info">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
+          </div>
+          
+          <button
+            className="item-modal__delete-btn"
+            type="button"
+            onClick={() => onDelete(card)}
+          >
+            Delete item
+          </button>
         </div>
       </div>
     </div>

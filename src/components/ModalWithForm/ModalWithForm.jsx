@@ -2,7 +2,7 @@ import "./ModalWithForm.css";
 import closeIcon from "../../assets/close_X.svg";
 import React, { useEffect } from "react";
 
-function ModalWithForm({ children, buttonText, title, onClose, isOpen }) {
+function ModalWithForm({ children, buttonText, title, onClose, isOpen, onSubmit }) {
   useEffect(() => {
     if (!isOpen) return;
 
@@ -30,7 +30,7 @@ function ModalWithForm({ children, buttonText, title, onClose, isOpen }) {
             alt="Close modal"
           />
         </button>
-        <form className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}

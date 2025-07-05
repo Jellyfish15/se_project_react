@@ -12,15 +12,30 @@
   margin: 0;
 }
 .header__add-clothes-btn {
-  margin: 0 20px 0 auto;
+  margin: 0 0 0 auto;
   border: none;
   cursor: pointer;
+}
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* space between toggle and button */
+  margin-left: auto; /* push actions to the right */
+}
+.toggle-switch {
+  margin: 0;
 }
 .header__user-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
+}
+.header__user-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .header__username {
