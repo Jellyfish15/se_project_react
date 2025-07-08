@@ -30,7 +30,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-const [itemToDelete, setItemToDelete] = useState(null);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -51,12 +51,12 @@ const [itemToDelete, setItemToDelete] = useState(null);
   };
 
   const handleConfirmDelete = () => {
-
-
     deleteItem(itemToDelete._id)
       .then(() => {
         console.log("Item deleted successfully");
-         setClothingItems((prev) => prev.filter((i) => i._id !== itemToDelete._id));
+        setClothingItems((prev) =>
+          prev.filter((i) => i._id !== itemToDelete._id)
+        );
         setIsConfirmOpen(false);
       })
       .catch((error) => {
@@ -81,7 +81,6 @@ const [itemToDelete, setItemToDelete] = useState(null);
         closeActiveModal();
       })
       .catch(console.error);
-    
   };
 
   useEffect(() => {
@@ -126,10 +125,12 @@ const [itemToDelete, setItemToDelete] = useState(null);
             <Route
               path="/profile"
               element={
-              <Profile 
-                clothingItems={clothingItems}
-      onCardClick={handleCardClick}
-      handleAddClick={handleAddClick} />}
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
+                />
+              }
             />
           </Routes>
 
@@ -151,7 +152,6 @@ const [itemToDelete, setItemToDelete] = useState(null);
           onClose={() => setIsConfirmOpen(false)}
           onConfirm={handleConfirmDelete}
           message="Are you sure you want to delete this item?"
-          
         />
       </div>
     </currentTemperatureUnitContext.Provider>

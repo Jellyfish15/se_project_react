@@ -6,7 +6,7 @@ import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(currentTemperatureUnitContext);
-  
+
   const filteredOptions = weatherCardOptions.filter((option) => {
     return (
       option.condition === weatherData.condition &&
@@ -32,8 +32,8 @@ function WeatherCard({ weatherData }) {
     <section className="weather-card">
       <p className="weather-card__temp">
         {weatherData.temp[currentTemperatureUnit]} &deg;{currentTemperatureUnit}
-        </p>
-        <img
+      </p>
+      <img
         src={weatherOption?.url}
         alt={`Card showing ${weatherOption?.day ? "Day" : "Night"}time
         ${weatherOption?.condition}. weather`}

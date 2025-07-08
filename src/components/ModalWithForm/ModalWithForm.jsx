@@ -2,7 +2,14 @@ import "./ModalWithForm.css";
 import closeIcon from "../../assets/close_X.svg";
 import React, { useEffect } from "react";
 
-function ModalWithForm({ children, buttonText, title, onClose, isOpen, onSubmit }) {
+function ModalWithForm({
+  children,
+  buttonText,
+  title,
+  onClose,
+  isOpen,
+  onSubmit,
+}) {
   useEffect(() => {
     if (!isOpen) return;
 

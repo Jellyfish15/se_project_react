@@ -2,18 +2,25 @@ import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
-function Main({ weatherData, handleCardClick, clothingItems, currentTemperatureUnit }) {
+function Main({
+  weatherData,
+  handleCardClick,
+  clothingItems,
+  currentTemperatureUnit,
+}) {
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          Today is {Math.ceil(weatherData.temp[currentTemperatureUnit])} &deg; {currentTemperatureUnit} / You may want to
-          wear:
+          Today is {Math.ceil(weatherData.temp[currentTemperatureUnit])} &deg;{" "}
+          {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
           {clothingItems
-           .filter((item) => !weatherData.type || item.weather === weatherData.type)
+            .filter(
+              (item) => !weatherData.type || item.weather === weatherData.type
+            )
             .map((item) => {
               return (
                 <ItemCard
