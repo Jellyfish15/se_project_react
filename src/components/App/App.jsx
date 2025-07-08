@@ -14,7 +14,7 @@ import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import { defaultClothingItems } from "../../utils/constants.js";
 import Profile from "../Profile/Profile.jsx";
-import { getItems } from "../../utils/api.js";
+import { getItems, addItem, deleteItem } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -51,9 +51,19 @@ const [itemToDelete, setItemToDelete] = useState(null);
   };
 
   const handleConfirmDelete = () => {
-    setClothingItems((prev) => prev.filter((i) => i._id !== itemToDelete._id));
-    setIsConfirmOpen(false);
+
+
+    deleteItem(itemToDelete._id)
+      .then(() => {
+        console.log("Item deleted successfully");
+         setClothingItems((prev) => prev.filter((i) => i._id !== itemToDelete._id));
+        setIsConfirmOpen(false);
+      })
+      .catch((error) => {
+        console.error("Error deleting item:", error);
+      });
     setItemToDelete(null);
+    setActiveModal("");
   };
 
   const closeActiveModal = () => {
@@ -61,11 +71,17 @@ const [itemToDelete, setItemToDelete] = useState(null);
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    setClothingItems((prevItems) => [
-      { name, link: imageUrl, weather },
-      ...prevItems,
-    ]);
-    closeActiveModal();
+    // setClothingItems((prevItems) => [
+    //   { name, link: imageUrl, weather },
+    //   ...prevItems,
+    // ]);
+    addItem({ name, imageUrl, weather })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+    
   };
 
   useEffect(() => {
@@ -109,7 +125,11 @@ const [itemToDelete, setItemToDelete] = useState(null);
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+              <Profile 
+                clothingItems={clothingItems}
+      onCardClick={handleCardClick}
+      handleAddClick={handleAddClick} />}
             />
           </Routes>
 
@@ -131,6 +151,7 @@ const [itemToDelete, setItemToDelete] = useState(null);
           onClose={() => setIsConfirmOpen(false)}
           onConfirm={handleConfirmDelete}
           message="Are you sure you want to delete this item?"
+          
         />
       </div>
     </currentTemperatureUnitContext.Provider>

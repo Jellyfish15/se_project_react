@@ -3,7 +3,7 @@ import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard.jsx";
 import { defaultClothingItems } from "../../utils/constants.js";
 
-function ClothesSection({ onCardClick, handleAddClick }) {
+function ClothesSection({ clothingItems, onCardClick, handleAddClick }) {
     
   return (
     <div className="clothes-section">
@@ -15,17 +15,16 @@ function ClothesSection({ onCardClick, handleAddClick }) {
         className="clothes-section__button">+ Add New</button>
       </div>
       <ul className="clothes-section__list">
-          {defaultClothingItems
-            .map((item) => {
-              return (
+          {clothingItems.map((item) => (
+              
                 <ItemCard
                   key={item._id}
                   item={item}
                   onCardClick={onCardClick}
 
                  />
-              );
-            })}
+              
+            ))}
         </ul>
     </div>
   );
