@@ -10,7 +10,7 @@ import { getWeather } from "../../utils/weatherApi.js";
 import { coordinates, APIkey } from "../../utils/constants.js";
 import { filterWeatherData } from "../../utils/weatherApi.js";
 import Footer from "../Footer/footer.jsx";
-import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import { defaultClothingItems } from "../../utils/constants.js";
 import Profile from "../Profile/Profile.jsx";
@@ -33,7 +33,7 @@ function App() {
   const [itemToDelete, setItemToDelete] = useState(null);
 
   const handleToggleSwitchChange = () => {
-    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+    setCurrentTemperatureUnit(CurrentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleCardClick = (card) => {
@@ -58,12 +58,12 @@ function App() {
           prev.filter((i) => i._id !== itemToDelete._id)
         );
         setIsConfirmOpen(false);
+        setItemToDelete(null);
+        closeActiveModal("");
       })
       .catch((error) => {
         console.error("Error deleting item:", error);
       });
-    setItemToDelete(null);
-    setActiveModal("");
   };
 
   const closeActiveModal = () => {
@@ -104,7 +104,7 @@ function App() {
   }, []);
 
   return (
-    <currentTemperatureUnitContext.Provider
+    <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       <div className="page">
@@ -117,7 +117,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
-                  currentTemperatureUnit={currentTemperatureUnit}
+                  CurrentTemperatureUnit={currentTemperatureUnit}
                   clothingItems={clothingItems}
                 />
               }
@@ -154,7 +154,7 @@ function App() {
           message="Are you sure you want to delete this item?"
         />
       </div>
-    </currentTemperatureUnitContext.Provider>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
