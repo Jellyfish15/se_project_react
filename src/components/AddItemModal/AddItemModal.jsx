@@ -25,13 +25,13 @@ export default function AddItemModal({
     e.preventDefault();
     onAddItemModalSubmit({ name, imageUrl, weather });
 
-    useEffect(() => {
+  };
+useEffect(() => {
       setName("");
       setImageUrl("");
       setWeather("");
     }, [isOpen]);
-  };
-
+    
   return (
     <ModalWithForm
       buttonText="Add garment"

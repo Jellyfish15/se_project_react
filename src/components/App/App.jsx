@@ -33,7 +33,7 @@ function App() {
   const [itemToDelete, setItemToDelete] = useState(null);
 
   const handleToggleSwitchChange = () => {
-    setCurrentTemperatureUnit(CurrentTemperatureUnit === "F" ? "C" : "F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleCardClick = (card) => {
