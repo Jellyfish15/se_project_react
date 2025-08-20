@@ -19,8 +19,8 @@
 .header__actions {
   display: flex;
   align-items: center;
-  gap: 16px; /* space between toggle and button */
-  margin-left: auto; /* push actions to the right */
+  gap: 16px; 
+  margin-left: auto; 
 }
 .toggle-switch {
   margin: 0;
@@ -36,8 +36,19 @@
   color: inherit;
   display: flex;
   align-items: center;
+  margin-left: 20px;
+  font-family: Cabinet Grotesk, sans-serif;
 }
-
+.header__login-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.header__register-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 .header__username {
   margin: 0;
 }

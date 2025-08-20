@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +17,7 @@
 }
 
 .modal__title {
+  margin: 0;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -27,6 +28,7 @@
   top: 20px;
   right: 28px;
   border: none;
+
   background-color: transparent;
   size: 20px;
 }
@@ -114,5 +116,29 @@
 }
 
 .modal__submit:disabled {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #e0e0e0;
+  color: white;
+}
+.modal__submit:disabled:hover {
+  cursor: not-allowed;
+}
+
+.modal__buttons {
+  display: flex;
+  margin-top: 16px;
+}
+
+.modal__register {
+  font-size: 16px;
+  line-height: 20px;
+  width: 124px;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.modal__register:disabled {
+  color: #888;
+  cursor: not-allowed;
 }

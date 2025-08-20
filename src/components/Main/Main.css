@@ -9,3 +9,8 @@
   padding: 0;
   gap: 21px;
 }
+.card__name {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
