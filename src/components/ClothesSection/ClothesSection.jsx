@@ -4,7 +4,7 @@ import { defaultClothingItems } from "../../utils/constants.js";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 
-function ClothesSection(props) {
+function ClothesSection({ clothingItems, onCardClick, handleAddClick }) {
   const currentUser = useContext(CurrentUserContext);
   const userItems = clothingItems.filter(
     (item) => item.owner === (currentUser && currentUser._id)

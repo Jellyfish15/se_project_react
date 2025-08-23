@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 import WeatherCard from "../WeatherCard/WeatherCard.jsx";
 import Main from "../Main/Main.jsx";
 import ItemModal from "../ItemModal/ItemModal.jsx";
@@ -27,28 +28,27 @@ import {
   removeCardLike,
 } from "../../utils/api.js";
 
-const handleCardLike = ({ id, isLiked }) => {
-  const token = localStorage.getItem("jwt");
-  if (!isLiked) {
-    addCardLike(id, token)
-      .then((updatedCard) => {
-        setClothingItems((cards) =>
-          cards.map((item) => (item._id === id ? updatedCard : item))
-        );
-      })
-      .catch((err) => console.log(err));
-  } else {
-    removeCardLike(id, token)
-      .then((updatedCard) => {
-        setClothingItems((cards) =>
-          cards.map((item) => (item._id === id ? updatedCard : item))
-        );
-      })
-      .catch((err) => console.log(err));
-  }
-};
-
 function App() {
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    if (!isLiked) {
+      addCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      removeCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
+  };
   const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -66,6 +66,7 @@ function App() {
   const [loginError, setLoginError] = useState("");
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
@@ -124,6 +125,9 @@ function App() {
         return login({ email, password });
       })
       .then((userData) => {
+        if (userData.token) {
+          localStorage.setItem("jwt", userData.token);
+        }
         setUser(userData);
         setIsAuthorized(true);
         setIsLoggedIn(true);
@@ -201,8 +205,8 @@ function App() {
 
   useEffect(() => {
     getItems()
-      .then(({ data }) => {
-        setClothingItems(data.reverse());
+      .then((items) => {
+        setClothingItems(items.reverse());
       })
       .catch(console.error);
   }, []);
@@ -213,6 +217,28 @@ function App() {
     setIsAuthorized(false);
     setUser(null);
     navigate("/");
+  };
+
+  const handleEditProfileClick = () => {
+    setIsEditProfileOpen(true);
+  };
+
+  const handleEditProfileClose = () => {
+    setIsEditProfileOpen(false);
+  };
+
+  const handleEditProfile = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    import("../../utils/api.js").then(({ updateUser }) => {
+      updateUser({ name, avatar }, token)
+        .then((updatedUser) => {
+          setUser((prev) => ({ ...prev, ...updatedUser }));
+          setIsEditProfileOpen(false);
+        })
+        .catch((err) => {
+          // Optionally handle error
+        });
+    });
   };
 
   const handleSwitchToRegister = () => {
@@ -264,6 +290,7 @@ function App() {
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       onSignOut={handleSignOut}
+                      onEditProfile={handleEditProfileClick}
                     />
                   </ProtectedRoute>
                 }
@@ -320,6 +347,11 @@ function App() {
             onClose={() => setIsConfirmOpen(false)}
             onConfirm={handleConfirmDelete}
             message="Are you sure you want to delete this item?"
+          />
+          <EditProfileModal
+            isOpen={isEditProfileOpen}
+            onClose={handleEditProfileClose}
+            onEditProfile={handleEditProfile}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

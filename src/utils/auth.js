@@ -1,6 +1,5 @@
-// Check token validity
 export function checkToken(token) {
-  return fetch(`${baseUrl}/users`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -10,10 +9,9 @@ export function checkToken(token) {
     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
   );
 }
-const baseUrl = "http://localhost:3001";
 
 export function register({ email, password, name, avatar }) {
-  return fetch(`${baseUrl}/users`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +23,7 @@ export function register({ email, password, name, avatar }) {
 }
 
 export function login({ email, password }) {
-  return fetch(`${baseUrl}/users/login`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

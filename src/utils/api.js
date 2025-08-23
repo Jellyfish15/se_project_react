@@ -1,3 +1,13 @@
+function updateUser({ name, avatar }, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(checkResponse);
+}
 const baseUrl = "http://localhost:3001";
 
 export function checkResponse(res) {
@@ -5,10 +15,10 @@ export function checkResponse(res) {
 }
 
 function getItems() {
-  return fetch(`${baseUrl}/clothing-items`).then(checkResponse);
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 function addItem({ name, imageUrl, weather }, token) {
-  return fetch(`${baseUrl}/clothing-items`, {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,4 +61,11 @@ function removeCardLike(id, token) {
   }).then(checkResponse);
 }
 
-export { getItems, addItem, deleteItem, addCardLike, removeCardLike };
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  addCardLike,
+  removeCardLike,
+  updateUser,
+};

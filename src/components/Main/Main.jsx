@@ -7,6 +7,7 @@ function Main({
   handleCardClick,
   clothingItems,
   CurrentTemperatureUnit,
+  onCardLike,
 }) {
   return (
     <main>
@@ -27,6 +28,7 @@ function Main({
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
+                  onCardLike={onCardLike}
                 />
               );
             })}
