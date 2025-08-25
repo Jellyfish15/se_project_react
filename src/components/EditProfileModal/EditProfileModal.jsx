@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import closeIcon from "../../assets/close_X.svg";
-import "./EditProfileModal.css";
+import "../ModalWithForm/ModalWithForm.css";
 
 function EditProfileModal({ isOpen, onClose, onEditProfile }) {
   const currentUser = useContext(CurrentUserContext);

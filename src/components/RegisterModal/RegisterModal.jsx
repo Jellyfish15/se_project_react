@@ -1,5 +1,5 @@
 import React from "react";
-import "./RegisterModal.css";
+import "../ModalWithForm/ModalWithForm.css";
 import closeIcon from "../../assets/close_X.svg";
 
 function RegisterModal({

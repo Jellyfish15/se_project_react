@@ -1,4 +1,4 @@
-import "./ConfirmModal.css";
+import "../ModalWithForm/ModalWithForm.css";
 import closeIcon from "../../assets/close_X.svg";
 
 function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
@@ -10,11 +10,8 @@ function ConfirmModal({ isOpen, onClose, onConfirm, message }) {
       onClick={onClose}
       id="confirm-modal"
     >
-      <div
-        className="confirm-modal__content"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h2 className="confirm-modal__title">
+      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
+        <h2 className="modal__title">
           Are you sure you want to delete this item? This action is
           irreversible.
         </h2>

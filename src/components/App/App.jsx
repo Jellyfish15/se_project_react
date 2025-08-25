@@ -206,6 +206,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
+        console.log("Fetched items:", items);
         setClothingItems(items.reverse());
       })
       .catch(console.error);

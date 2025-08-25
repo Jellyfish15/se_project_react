@@ -116,3 +116,17 @@
 .modal__submit:disabled {
   background-color: rgba(0, 0, 0, 0.3);
 }
+.modal__register {
+  font-size: 16px;
+  line-height: 20px;
+  width: 124px;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.modal__register:disabled {
+  color: #888;
+  cursor: not-allowed;
+}
