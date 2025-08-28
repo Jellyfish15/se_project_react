@@ -9,6 +9,8 @@ function ModalWithForm({
   onClose,
   isOpen,
   onSubmit,
+  secondaryButtonText,
+  secondaryButtonAction,
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -39,9 +41,20 @@ function ModalWithForm({
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
+          <div className="modal__buttons">
+            <button type="submit" className="modal__submit">
+              {buttonText}
+            </button>
+            {secondaryButtonText && secondaryButtonAction && (
+              <button
+                type="button"
+                className="modal__register"
+                onClick={secondaryButtonAction}
+              >
+                {secondaryButtonText}
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>
@@ -49,5 +62,3 @@ function ModalWithForm({
 }
 
 export default ModalWithForm;
-
-

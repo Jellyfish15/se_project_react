@@ -147,11 +147,15 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          setIsAuthorized(true);
-          setIsLoggedIn(true);
-          navigate("/profile");
+          return checkToken(res.token); // fetch user data
         }
-        setUser(res);
+        throw new Error("No token received");
+      })
+      .then((userData) => {
+        setUser(userData);
+        setIsAuthorized(true);
+        setIsLoggedIn(true);
+        navigate("/profile");
         closeActiveModal();
         setLoginEmail("");
         setLoginPassword("");
@@ -159,16 +163,6 @@ function App() {
       .catch((err) => {
         setLoginError("Login failed. Check credentials.");
       });
-  };
-
-  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    const token = localStorage.getItem("jwt");
-    addItem({ name, imageUrl, weather }, token)
-      .then((newItem) => {
-        setClothingItems((prevItems) => [newItem, ...prevItems]);
-        closeActiveModal();
-      })
-      .catch(console.error);
   };
 
   useEffect(() => {
@@ -220,6 +214,15 @@ function App() {
     navigate("/");
   };
 
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+    const token = localStorage.getItem("jwt");
+    addItem({ name, imageUrl, weather }, token)
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
   const handleEditProfileClick = () => {
     setIsEditProfileOpen(true);
   };
@@ -292,6 +295,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       onSignOut={handleSignOut}
                       onEditProfile={handleEditProfileClick}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

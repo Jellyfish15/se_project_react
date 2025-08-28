@@ -52,3 +52,8 @@
 .header__username {
   margin: 0;
 }
+.header__avatar {
+ 
+  border-radius: 50%;
+  object-fit: cover;
+}

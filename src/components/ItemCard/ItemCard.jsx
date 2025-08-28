@@ -29,17 +29,19 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     <li className="card item-card" onClick={() => onCardClick(item)}>
       <div className="card__name-row">
         <h2 className="card__name">{item.name}</h2>
-        <button
-          className={itemLikeButtonClassName}
-          type="button"
-          onClick={handleLike}
-        >
-          <img
-            src={isLiked ? likeBtnSelected : likeBtn}
-            alt={isLiked ? "Liked" : "Like"}
-            className="card__like-img"
-          />
-        </button>
+        {isLoggedIn && (
+          <button
+            className={itemLikeButtonClassName}
+            type="button"
+            onClick={handleLike}
+          >
+            <img
+              src={isLiked ? likeBtnSelected : likeBtn}
+              alt={isLiked ? "Liked" : "Like"}
+              className="card__like-img"
+            />
+          </button>
+        )}
       </div>
       <img
         className="card__image"

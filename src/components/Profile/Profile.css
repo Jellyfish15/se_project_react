@@ -1,6 +1,7 @@
 .profile {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    font-family: Cabinet Grotesk, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  
+  flex-direction: row;
+  font-family: Cabinet Grotesk, sans-serif;
 }

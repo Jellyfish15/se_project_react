@@ -43,9 +43,11 @@ function Header(props) {
             <p className="header__username">{currentUser.name}</p>
             {currentUser.avatar ? (
               <img
-                src={currentUser.avatar}
+                src={currentUser?.avatar}
                 alt="User avatar"
                 className="header__avatar"
+                width={40}
+                height={40}
               />
             ) : (
               <div className="header__avatar header__avatar--placeholder">

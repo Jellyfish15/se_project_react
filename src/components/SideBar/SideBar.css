@@ -1,8 +1,29 @@
 .sidebar {
-    background-color: transparent;
-    padding: 20px;
-    gap: 16px;
-    display: flex;
-    flex-direction: row;
-    width: 229px;
+  background-color: transparent;
+  padding: 20px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 229px;
+}
+
+.sidebar__avatar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar__avatar-image {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.sidebar__username {
+  font-weight: bold;
+}
+.sidebar__edit-btn,
+.sidebar__signout-btn {
+  
+  border: none;
+  text-align: left;
 }
